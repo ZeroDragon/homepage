@@ -50,6 +50,7 @@ function termValue(term) {
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 
   eleventyConfig.addCollection("posts", (collectionApi) => collectionApi.getAll()
     .filter((item) => item.data.type === "post")

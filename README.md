@@ -21,6 +21,22 @@ Run the build and static-site checks:
 npm test
 ```
 
+## Deployment
+
+Pushing a Git tag whose name ends in `-prod` builds and deploys the site to GitHub Pages:
+
+```sh
+git tag v1.0.0-prod
+git push origin v1.0.0-prod
+```
+
+The workflow publishes `_site/` and includes `src/CNAME` for the custom domain
+`floresbenavides.com`. Before the first deployment, set the repository's Pages
+publishing source to **GitHub Actions** and its custom domain to
+`floresbenavides.com` in **Settings → Pages**. Configure the domain's DNS records
+with its DNS provider and enable HTTPS after Pages verifies the domain; the
+workflow does not change DNS or repository settings.
+
 ## Writing content
 
 Create a new post as a Markdown file in `src/posts/`. Include the title, publication date, and URL slug in the front matter:

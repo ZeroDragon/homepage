@@ -51,6 +51,8 @@ test("published content is authored in Markdown", () => {
 });
 
 test("all Markdown content routes are generated without WordPress markup", () => {
+  assert.equal(readFileSync(path.join(output, "CNAME"), "utf8").trim(), "floresbenavides.com");
+
   for (const file of [...pageFiles, ...postFiles.map((name) => path.join(source, "posts", name))]) {
     const metadata = frontMatter(file);
     const permalink = metadata.match(/^permalink: (.+)$/m)?.[1];
