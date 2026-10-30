@@ -44,7 +44,7 @@ Me mudo a San Francisco, California donde trabajé en un IHOP
 ## 💘  
 2009
 
-Conozco a Adriana Mejía (Ady) por twitter y me convence a regresar a México
+Conozco a Adriana Mejía por twitter y me convence a regresar a México
 
 ## 🍴  
 2010
@@ -64,7 +64,7 @@ Entro a trabajar en Genotipo donde implemento Git, CodeIgniter, Less, Jade y Cof
 ## 🚙  
 2013
 
-Ady, unos compañeros y yo nos mudamos a Querétaro, Qro. A abrir la nueva oficina de Genotipo
+Adriana, unos compañeros y yo nos mudamos a Querétaro, Qro. A abrir la nueva oficina de Genotipo
 
 ## 💹  
 2014
@@ -79,7 +79,7 @@ Después de tener el dominio arrumbado un buen rato, creo esta web usando ChaiTe
 ## 💍  
 2015
 
-Ady y yo nos casamos en CDMX
+Adriana y yo nos casamos en CDMX
 
 ## 🌴  
 2017
@@ -114,7 +114,7 @@ Comenzamos El Podcast DEV entre Swanros y yo
 ## 🏡  
 2019
 
-Después de vivir en Cancún, Querétaro, CDMX, Colima y CDMX de nuevo. Ady y yo nos decidimos a mudarnos esta vez en definitiva de regreso a Querétaro, donde compramos casa :3
+Después de vivir en Cancún, Querétaro, CDMX, Colima y CDMX de nuevo. Adriana y yo nos decidimos a mudarnos esta vez en definitiva de regreso a Querétaro, donde compramos casa :3
 
 ## 🌎  
 2021
@@ -125,3 +125,13 @@ Después de estar haciendo posts en medium y en otros lugares, me acuerdo que te
 2021
 
 Llegamos al episodio 100 de El Podcast DEV y me retiro del proyecto deseándole el mejor de los crecimientos a Swanros. Me salgo porque este proyecto está creciendo mucho más de lo que puedo ponerle atención y prefiero salirme antes de convertirme en un lastre.
+
+## ⛓️‍💥  
+2025
+
+Adriana y yo nos separamos.. C'est la vie
+
+## 🏍  
+2026
+
+Compro una TERCERA motocicleta, esta vez una Indian 101. Para esto vendí la Suzuki C50. La GZ150 ya la había vendido hace mucho tiempo
