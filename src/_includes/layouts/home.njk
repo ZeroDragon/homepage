@@ -2,10 +2,31 @@
 layout: layouts/base.njk
 ---
 <div class="home-kicker"><span class="status-dot"></span> BITÁCORA PERSONAL · DESDE 2015</div>
+{% set latestPost = collections.posts[0] %}
+{% set latestPostMarkup %}
+  <p class="eyebrow">ÚLTIMO POST</p>
+  <h2 id="latest-post-heading"><a href="{{ latestPost.url }}">{{ latestPost.data.title }}</a></h2>
+  <time datetime="{{ latestPost.date | dateIso }}">{{ latestPost.date | formatDate }}</time>
+  {% if latestPost.data.featuredImage %}
+    <a class="home-latest-image" href="{{ latestPost.url }}">
+      <img src="{{ latestPost.data.featuredImage }}" alt="{{ latestPost.data.featuredImageAlt or latestPost.data.title }}" loading="lazy">
+    </a>
+  {% endif %}
+  <p>{{ latestPost.data.description or latestPost.templateContent | excerpt(220) }}</p>
+  <a class="card-more" href="{{ latestPost.url }}">Leer artículo <span aria-hidden="true">↗</span></a>
+{% endset %}
+{% set homeSections = content | splitText("<!-- home-sections -->") %}
+{% set homeColumns = homeSections[1] | splitText("<!-- latest-post -->") %}
+{% set homeSocial = homeColumns[1] | splitText("<!-- home-social -->") %}
 <section class="home-intro">
   <img class="home-avatar" src="{{ site.avatar }}" alt="{{ site.author }}" width="158" height="158">
-  <article class="home-content prose">{{ content | safe }}</article>
+  <article class="home-content prose">{{ homeSections[0] | safe }}</article>
 </section>
+<div class="home-details">
+  <section class="home-about prose">{{ homeColumns[0] | safe }}</section>
+  <section class="home-latest prose" aria-labelledby="latest-post-heading">{{ latestPostMarkup | safe }}</section>
+  <section class="home-social prose">{{ homeSocial[1] | safe }}</section>
+</div>
 <section class="recent-posts" aria-labelledby="recent-heading">
   <div class="section-heading">
     <div>

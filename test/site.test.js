@@ -93,6 +93,13 @@ test("home page uses the GitHub avatar and retains its latest-post section", () 
   const home = readFileSync(path.join(output, "index.html"), "utf8");
   const about = readFileSync(path.join(output, "about", "index.html"), "utf8");
   assert.match(home, /class="recent-posts"/);
+  assert.match(home, /class="home-details"/);
+  assert.match(home, /class="home-about prose"/);
+  assert.match(home, /class="home-latest prose"/);
+  assert.match(home, /class="home-social prose"/);
+  assert.doesNotMatch(home, /<hr>/);
+  assert.match(home, /ÚLTIMO POST/);
+  assert.match(home, /id="latest-post-heading"><a href="\/sitecraft-desplegado\/">SiteCraft Desplegado/);
   assert.equal((home.match(/class="post-card"/g) ?? []).length, 3);
   assert.match(home, /SiteCraft Desplegado/);
   assert.match(home, new RegExp(`src="${site.avatar.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));

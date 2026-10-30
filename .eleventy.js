@@ -111,6 +111,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dateIso", (value) => {
     return dateValue(value).toISOString();
   });
+  eleventyConfig.addFilter("splitText", (value, separator) => String(value).split(separator));
   eleventyConfig.addFilter("rfcDate", (value) => {
     return dateValue(value).toUTCString();
   });
