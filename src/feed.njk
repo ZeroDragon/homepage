@@ -8,13 +8,13 @@ permalink: /feed.xml
     <link>{{ site.baseUrl }}</link>
     <description>{{ site.description | xmlEscape }}</description>
     <language>es-MX</language>
-    {% for post in site.posts %}
+    {% for post in collections.posts %}
       <item>
-        <title>{{ post.post_title | decodeEntities | xmlEscape }}</title>
-        <link>{{ site.baseUrl }}/{{ post.post_name }}/</link>
-        <guid>{{ site.baseUrl }}/{{ post.post_name }}/</guid>
-        <pubDate>{{ post.post_date | rfcDate }}</pubDate>
-        <description>{{ post.post_excerpt or post.post_content | excerpt(220) | xmlEscape }}</description>
+        <title>{{ post.data.title | xmlEscape }}</title>
+        <link>{{ site.baseUrl }}{{ post.url }}</link>
+        <guid>{{ site.baseUrl }}{{ post.url }}</guid>
+        <pubDate>{{ post.date | rfcDate }}</pubDate>
+        <description>{{ post.data.description or post.templateContent | excerpt(220) | xmlEscape }}</description>
       </item>
     {% endfor %}
   </channel>

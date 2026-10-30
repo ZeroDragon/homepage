@@ -3,19 +3,17 @@ layout: layouts/base.njk
 ---
 <article class="article-shell">
   <header class="entry-header article-header">
-    <p class="eyebrow">BITÁCORA · {{ post.post_date | formatDate }}</p>
-    <h1>{{ post.post_title | decodeEntities }}</h1>
-    {% if post.terms.length %}
+    <p class="eyebrow">BITÁCORA · {{ date | formatDate }}</p>
+    <h1>{{ title }}</h1>
+    {% if categories.length %}
       <div class="term-list" aria-label="Categorías">
-        {% for term in post.terms %}
-          {% if term.taxonomy == "category" %}
-            <a class="term-chip" href="/category/{{ term.slug }}/">{{ term.name | decodeEntities }}</a>
-          {% endif %}
+        {% for term in categories %}
+          <a class="term-chip" href="/category/{{ term.slug }}/">{{ term.name }}</a>
         {% endfor %}
       </div>
     {% endif %}
-    {% if post.featured_media and post.featured_media.url %}
-      <img class="featured-image" src="{{ post.featured_media.url }}" alt="{{ post.featured_media.title | decodeEntities }}" loading="eager">
+    {% if featuredImage %}
+      <img class="featured-image" src="{{ featuredImage }}" alt="{{ featuredImageAlt or title }}" loading="eager">
     {% endif %}
   </header>
   <div class="prose">{{ content | safe }}</div>

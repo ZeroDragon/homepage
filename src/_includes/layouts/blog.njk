@@ -1,0 +1,30 @@
+---
+layout: layouts/archive.njk
+---
+<header class="archive-header">
+  <p class="eyebrow">ARCHIVO · {{ collections.posts.length }} ARTÍCULOS</p>
+  <h1>La bitácora</h1>
+  {% if content %}
+    <div class="prose">{{ content | safe }}</div>
+  {% else %}
+    <p>{{ description }}</p>
+  {% endif %}
+</header>
+<div class="post-list">
+  {% for post in collections.posts %}
+    <article class="post-row">
+      <time datetime="{{ post.date | dateIso }}">{{ post.date | formatDate }}</time>
+      <div>
+        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+        <p>{{ post.data.description or post.templateContent | excerpt(190) }}</p>
+        {% if post.data.categories.length %}
+          <div class="term-list">
+            {% for term in post.data.categories %}
+              <a class="term-chip" href="/category/{{ term.slug }}/">{{ term.name }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</div>
