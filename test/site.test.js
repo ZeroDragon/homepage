@@ -44,6 +44,9 @@ test("dynamic WordPress home blocks are rendered and navigation stays active", (
   const about = readFileSync(path.join(output, "about", "index.html"), "utf8");
   assert.ok(home.includes(site.posts[0].post_title));
   assert.ok(!home.includes("wp:latest-posts"));
+  assert.match(home, new RegExp(`src="${site.avatar.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  assert.match(home, /class="wp-image-42 home-avatar"/);
+  assert.ok(!home.includes("/assets/uploads/2021/01/abe3b73d502764dd8c5c7eb5cd6a37f4-1.png"));
   assert.match(about, /href="\/about\/" aria-current="page"/);
 });
 

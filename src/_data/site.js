@@ -3,6 +3,7 @@ const path = require("node:path");
 const wordpress = require("./wordpress.json");
 
 const uploadsDirectory = path.resolve(__dirname, "../assets/uploads");
+const avatar = "https://avatars.githubusercontent.com/u/616185?v=4";
 const uploadUrl = /https?:\/\/(?:www\.)?floresbenavides\.com\/wp-content\/uploads\/([^"'<>\s)]+)/gi;
 
 function rewriteContent(content = "") {
@@ -76,10 +77,15 @@ const blogPageId = Number(wordpress.options.page_for_posts);
 const homePage = pages.find((page) => page.ID === homePageId);
 const blogPage = pages.find((page) => page.ID === blogPageId);
 if (homePage) {
-  homePage.post_content = homePage.post_content.replace(
-    /<!--\s*wp:latest-posts\b[\s\S]*?\/-->/,
-    latestPostMarkup(posts[0]),
-  );
+  homePage.post_content = homePage.post_content
+    .replace(
+      /<img\b(?=[^>]*\bclass="[^"]*\bwp-image-42\b")[^>]*>/,
+      `<img src="${avatar}" alt="Carlos Flores Benavides" class="wp-image-42 home-avatar" width="158" height="158">`,
+    )
+    .replace(
+      /<!--\s*wp:latest-posts\b[\s\S]*?\/-->/,
+      latestPostMarkup(posts[0]),
+    );
 }
 
 function makeTaxonomy(taxonomy) {
@@ -104,7 +110,7 @@ function makeTaxonomy(taxonomy) {
 
 module.exports = {
   author: wordpress.options.blogname,
-  avatar: "https://avatars.githubusercontent.com/u/616185?v=4",
+  avatar,
   baseUrl: "https://floresbenavides.com",
   blogDescription: wordpress.options.blogdescription,
   blogPage,

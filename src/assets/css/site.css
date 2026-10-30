@@ -388,6 +388,10 @@ h3 {
   gap: 0;
 }
 
+.home-content .home-avatar {
+  border-radius: 50%;
+}
+
 .wp-content .wp-block-latest-posts__list {
   margin: 0;
   padding: 0;
