@@ -1,0 +1,12 @@
+---
+pagination:
+  data: site.posts
+  size: 1
+  alias: post
+permalink: "{{ post.post_name }}/index.html"
+layout: layouts/post.njk
+title: "{{ post.post_title }}"
+description: "{{ post.post_excerpt or post.post_content | excerpt(160) }}"
+---
+{{ post.post_content | safe }}
+

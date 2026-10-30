@@ -1,0 +1,25 @@
+---
+pagination:
+  data: site.tags
+  size: 1
+  alias: tag
+permalink: "tag/{{ tag.slug }}/index.html"
+layout: layouts/archive.njk
+title: "{{ tag.name }}"
+---
+<header class="archive-header">
+  <p class="eyebrow">ETIQUETA · {{ tag.posts.length }} ARTÍCULOS</p>
+  <h1>{{ tag.name | decodeEntities }}</h1>
+</header>
+<div class="post-list">
+  {% for post in tag.posts %}
+    <article class="post-row">
+      <time datetime="{{ post.post_date | dateIso }}">{{ post.post_date | formatDate }}</time>
+      <div>
+        <h2><a href="/{{ post.post_name }}/">{{ post.post_title | decodeEntities }}</a></h2>
+        <p>{{ post.post_excerpt or post.post_content | excerpt(190) }}</p>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+

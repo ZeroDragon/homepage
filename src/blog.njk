@@ -1,0 +1,37 @@
+---
+layout: layouts/archive.njk
+title: Blog
+description: Artículos sobre desarrollo web, tecnología y aventuras.
+active: blog
+permalink: /blog/index.html
+---
+<header class="archive-header">
+  <p class="eyebrow">ARCHIVO · {{ site.posts.length }} ARTÍCULOS</p>
+  <h1>La bitácora</h1>
+  {% if site.blogPage.post_content %}
+    <div class="wp-content">{{ site.blogPage.post_content | safe }}</div>
+  {% else %}
+    <p>Notas sobre desarrollo web, tecnología, experimentos y todo lo que se cruza en el camino.</p>
+  {% endif %}
+</header>
+<div class="post-list">
+  {% for post in site.posts %}
+    <article class="post-row">
+      <time datetime="{{ post.post_date | dateIso }}">{{ post.post_date | formatDate }}</time>
+      <div>
+        <h2><a href="/{{ post.post_name }}/">{{ post.post_title | decodeEntities }}</a></h2>
+        <p>{{ post.post_excerpt or post.post_content | excerpt(190) }}</p>
+        {% if post.terms.length %}
+          <div class="term-list">
+            {% for term in post.terms %}
+              {% if term.taxonomy == "category" %}
+                <a class="term-chip" href="/category/{{ term.slug }}/">{{ term.name | decodeEntities }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+

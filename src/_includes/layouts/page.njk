@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+---
+<article class="page-shell">
+  <header class="entry-header">
+    <p class="eyebrow">PÁGINA</p>
+    <h1>{{ wpPage.post_title | decodeEntities }}</h1>
+  </header>
+  <div class="wp-content">{{ wpPage.post_content | safe }}</div>
+</article>
+

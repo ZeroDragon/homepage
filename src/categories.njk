@@ -1,0 +1,25 @@
+---
+pagination:
+  data: site.categories
+  size: 1
+  alias: category
+permalink: "category/{{ category.slug }}/index.html"
+layout: layouts/archive.njk
+title: "{{ category.name }}"
+---
+<header class="archive-header">
+  <p class="eyebrow">CATEGORÍA · {{ category.posts.length }} ARTÍCULOS</p>
+  <h1>{{ category.name | decodeEntities }}</h1>
+</header>
+<div class="post-list">
+  {% for post in category.posts %}
+    <article class="post-row">
+      <time datetime="{{ post.post_date | dateIso }}">{{ post.post_date | formatDate }}</time>
+      <div>
+        <h2><a href="/{{ post.post_name }}/">{{ post.post_title | decodeEntities }}</a></h2>
+        <p>{{ post.post_excerpt or post.post_content | excerpt(190) }}</p>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+

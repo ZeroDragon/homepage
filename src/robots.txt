@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://floresbenavides.com/sitemap.xml
+

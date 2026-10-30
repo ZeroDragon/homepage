@@ -1,0 +1,21 @@
+---
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.title | xmlEscape }}</title>
+    <link>{{ site.baseUrl }}</link>
+    <description>{{ site.description | xmlEscape }}</description>
+    <language>es-MX</language>
+    {% for post in site.posts %}
+      <item>
+        <title>{{ post.post_title | decodeEntities | xmlEscape }}</title>
+        <link>{{ site.baseUrl }}/{{ post.post_name }}/</link>
+        <guid>{{ site.baseUrl }}/{{ post.post_name }}/</guid>
+        <pubDate>{{ post.post_date | rfcDate }}</pubDate>
+        <description>{{ post.post_excerpt or post.post_content | excerpt(220) | xmlEscape }}</description>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+---
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.baseUrl }}/</loc></url>
+  <url><loc>{{ site.baseUrl }}/blog/</loc></url>
+  {% for page in site.pages %}
+    <url><loc>{{ site.baseUrl }}/{{ page.post_name }}/</loc></url>
+  {% endfor %}
+  {% for post in site.posts %}
+    <url><loc>{{ site.baseUrl }}/{{ post.post_name }}/</loc></url>
+  {% endfor %}
+  {% for category in site.categories %}
+    <url><loc>{{ site.baseUrl }}/category/{{ category.slug }}/</loc></url>
+  {% endfor %}
+  {% for tag in site.tags %}
+    <url><loc>{{ site.baseUrl }}/tag/{{ tag.slug }}/</loc></url>
+  {% endfor %}
+</urlset>
+
