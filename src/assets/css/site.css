@@ -406,6 +406,82 @@ h3 {
   border-radius: 50%;
 }
 
+.home-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  border-block: 0;
+}
+
+.home-details h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.35rem;
+}
+
+.home-details h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.35rem;
+}
+
+.home-about p:last-child,
+.home-social p:last-of-type {
+  margin-bottom: 0;
+}
+
+.home-latest {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--card);
+  box-shadow: 0 8px 26px rgba(37, 73, 113, 0.045);
+}
+
+.home-latest .eyebrow {
+  margin-bottom: 0.6rem;
+}
+
+.home-latest h2 a,
+.home-latest h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-latest time {
+  display: block;
+  margin: -0.3rem 0 0.75rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.home-latest-image {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.home-latest-image img {
+  width: 100%;
+  max-height: 9rem;
+  border-radius: 0.55rem;
+  object-fit: cover;
+}
+
+.home-latest > p:not(.eyebrow) {
+  margin-bottom: 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.home-social ul {
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
+.home-social > :last-child {
+  margin-bottom: 0;
+}
+
 .prose .latest-post {
   margin: 0;
   padding: 0;
@@ -476,7 +552,6 @@ h3 {
 
 .recent-posts {
   padding-top: 2.5rem;
-  border-top: 1px solid var(--line);
 }
 
 .section-heading {
@@ -637,6 +712,11 @@ h3 {
   }
 
   .home-intro {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .home-details {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
