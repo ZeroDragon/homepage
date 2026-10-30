@@ -306,28 +306,28 @@ h3 {
   object-fit: cover;
 }
 
-.wp-content > :first-child {
+.prose > :first-child {
   margin-top: 0;
 }
 
-.wp-content > :last-child {
+.prose > :last-child {
   margin-bottom: 0;
 }
 
-.wp-content p,
-.wp-content ul,
-.wp-content ol,
-.wp-content blockquote {
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote {
   margin-bottom: 1.35rem;
 }
 
-.wp-content h2,
-.wp-content h3,
-.wp-content h4 {
+.prose h2,
+.prose h3,
+.prose h4 {
   margin-top: 2.2rem;
 }
 
-.wp-content blockquote {
+.prose blockquote {
   margin-inline: 0;
   padding: 0.8rem 1.2rem;
   border-left: 3px solid #75a8da;
@@ -335,8 +335,8 @@ h3 {
   background: rgba(220, 236, 255, 0.5);
 }
 
-.wp-content pre,
-.wp-content .wp-block-code {
+.prose pre,
+.prose .code-block {
   overflow: auto;
   padding: 1.1rem 1.25rem;
   border: 1px solid #26476e;
@@ -346,13 +346,13 @@ h3 {
   font: 0.9rem/1.65 var(--mono);
 }
 
-.wp-content pre code {
+.prose pre code {
   padding: 0;
   color: inherit;
   background: transparent;
 }
 
-.wp-content code {
+.prose code {
   padding: 0.12em 0.35em;
   border-radius: 0.3rem;
   color: #224d7b;
@@ -360,32 +360,32 @@ h3 {
   font: 0.9em var(--mono);
 }
 
-.wp-content figure {
+.prose figure {
   margin: 2rem 0;
 }
 
-.wp-content figure img {
+.prose figure img {
   border: 1px solid var(--line);
   border-radius: 0.8rem;
 }
 
-.wp-content figcaption {
+.prose figcaption {
   margin-top: 0.5rem;
   color: var(--muted);
   font-size: 0.85rem;
 }
 
-.wp-content .wp-block-columns {
+.prose .content-columns {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
 
-.wp-content .wp-block-column {
+.prose .content-column {
   flex: 1 1 240px;
 }
 
-.home-content .wp-block-columns.alignwide {
+.home-content .content-columns-wide {
   gap: 0;
 }
 
@@ -393,27 +393,27 @@ h3 {
   border-radius: 50%;
 }
 
-.wp-content .wp-block-latest-posts__list {
+.prose .latest-post {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.wp-content .wp-block-latest-posts__featured-image {
+.prose .latest-post-image {
   margin-bottom: 0.75rem;
 }
 
-.wp-content .wp-block-latest-posts__featured-image img {
+.prose .latest-post-image img {
   max-height: 9rem;
   object-fit: cover;
 }
 
-.wp-content .wp-block-latest-posts__post-title {
+.prose .latest-post-title {
   display: block;
   font-family: var(--mono);
 }
 
-.wp-content .wp-block-latest-posts__post-date {
+.prose .latest-post-date {
   display: block;
   margin-top: 0.25rem;
   color: var(--muted);
@@ -421,13 +421,13 @@ h3 {
   font-size: 0.75rem;
 }
 
-.wp-content .wp-block-latest-posts__post-excerpt {
+.prose .latest-post-excerpt {
   margin-top: 0.6rem;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.wp-content .wp-block-buttons,
+.prose .content-buttons,
 .button-row {
   display: flex;
   flex-wrap: wrap;
@@ -435,8 +435,7 @@ h3 {
   gap: 0.75rem;
 }
 
-.wp-content .wp-block-button__link,
-.wp-content .wp-element-button,
+.prose .button-link,
 .button {
   display: inline-flex;
   align-items: center;
@@ -450,13 +449,13 @@ h3 {
   text-decoration: none;
 }
 
-.wp-content table {
+.prose table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.wp-content th,
-.wp-content td {
+.prose th,
+.prose td {
   padding: 0.6rem;
   border: 1px solid var(--line);
   text-align: left;

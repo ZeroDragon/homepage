@@ -18,9 +18,8 @@ layout: layouts/base.njk
       <img class="featured-image" src="{{ post.featured_media.url }}" alt="{{ post.featured_media.title | decodeEntities }}" loading="eager">
     {% endif %}
   </header>
-  <div class="wp-content">{{ content | safe }}</div>
+  <div class="prose">{{ content | safe }}</div>
   <nav class="article-back" aria-label="Navegación del artículo">
     <a href="/blog/">← Volver a todos los artículos</a>
   </nav>
 </article>
-

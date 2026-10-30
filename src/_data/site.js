@@ -5,9 +5,45 @@ const wordpress = require("./wordpress.json");
 const uploadsDirectory = path.resolve(__dirname, "../assets/uploads");
 const avatar = "https://avatars.githubusercontent.com/u/616185?v=4";
 const uploadUrl = /https?:\/\/(?:www\.)?floresbenavides\.com\/wp-content\/uploads\/([^"'<>\s)]+)/gi;
+const legacyClassNames = {
+  "wp-block-button__link": "button-link",
+  "wp-block-buttons": "content-buttons",
+  "wp-block-code": "code-block",
+  "wp-block-column": "content-column",
+  "wp-block-columns": "content-columns",
+  "wp-block-embed": "media-embed",
+  "wp-block-embed__wrapper": "media-embed-frame",
+  "wp-block-image": "content-figure",
+  "wp-block-quote": "content-quote",
+  "wp-element-button": "button-link",
+  "wp-image-42": "home-avatar",
+};
+
+function cleanContent(content = "") {
+  return content
+    .replace(/<!--\s*(?!\/?wp:latest-posts\b)\/?wp:[\s\S]*?-->/g, "")
+    .replace(/\sclass="([^"]*)"/g, (attribute, classList) => {
+      const classes = classList.split(/\s+/).flatMap((className) => {
+        if (className === "alignwide") {
+          return ["content-columns-wide"];
+        }
+        return legacyClassNames[className]
+          ? [legacyClassNames[className]]
+          : className.startsWith("wp-")
+            || className.startsWith("has-")
+            || className.startsWith("is-")
+            || className.startsWith("align")
+            ? []
+            : [className];
+      });
+
+      return classes.length ? ` class="${[...new Set(classes)].join(" ")}"` : "";
+    })
+    .replace(/\s(?:data-type|data-id)="[^"]*"/g, "");
+}
 
 function rewriteContent(content = "") {
-  return content
+  return cleanContent(content)
     .replace(uploadUrl, (url, encodedPath) => {
       const relativePath = decodeURIComponent(encodedPath.split(/[?#]/, 1)[0]);
       const localPath = path.resolve(uploadsDirectory, relativePath);
@@ -63,10 +99,10 @@ function latestPostMarkup(post) {
   const excerpt = text.split(/\s+/).slice(0, 50).join(" ");
   const url = `/${encodeURIComponent(post.post_name)}/`;
   const image = post.featured_media?.url
-    ? `<div class="wp-block-latest-posts__featured-image"><a href="${url}"><img src="${escapeHtml(post.featured_media.url)}" alt="${escapeHtml(post.featured_media.title)}" loading="lazy"></a></div>`
+    ? `<div class="latest-post-image"><a href="${url}"><img src="${escapeHtml(post.featured_media.url)}" alt="${escapeHtml(post.featured_media.title)}" loading="lazy"></a></div>`
     : "";
 
-  return `<ul class="wp-block-latest-posts__list"><li>${image}<a class="wp-block-latest-posts__post-title" href="${url}">${escapeHtml(post.post_title)}</a><time class="wp-block-latest-posts__post-date" datetime="${escapeHtml(post.post_date)}">${escapeHtml(post.post_date.slice(0, 10))}</time><div class="wp-block-latest-posts__post-excerpt">${escapeHtml(excerpt)} <a class="more-link" href="${url}">Leer artículo</a></div></li></ul>`;
+  return `<ul class="latest-post"><li>${image}<a class="latest-post-title" href="${url}">${escapeHtml(post.post_title)}</a><time class="latest-post-date" datetime="${escapeHtml(post.post_date)}">${escapeHtml(post.post_date.slice(0, 10))}</time><div class="latest-post-excerpt">${escapeHtml(excerpt)} <a class="more-link" href="${url}">Leer artículo</a></div></li></ul>`;
 }
 
 const records = wordpress.posts.map(normalize);
@@ -79,13 +115,14 @@ const blogPage = pages.find((page) => page.ID === blogPageId);
 if (homePage) {
   homePage.post_content = homePage.post_content
     .replace(
-      /<img\b(?=[^>]*\bclass="[^"]*\bwp-image-42\b")[^>]*>/,
-      `<img src="${avatar}" alt="Carlos Flores Benavides" class="wp-image-42 home-avatar" width="158" height="158">`,
+      /<img\b(?=[^>]*\bclass="[^"]*\bhome-avatar\b")[^>]*>/,
+      `<img src="${avatar}" alt="Carlos Flores Benavides" class="home-avatar" width="158" height="158">`,
     )
     .replace(
-      /<!--\s*wp:latest-posts\b[\s\S]*?\/-->/,
+      /<!--\s*wp:latest-posts\b[\s\S]*?-->/,
       latestPostMarkup(posts[0]),
     );
+  homePage.post_content = cleanContent(homePage.post_content);
 }
 
 function makeTaxonomy(taxonomy) {

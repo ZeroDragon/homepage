@@ -9,7 +9,7 @@ permalink: /blog/index.html
   <p class="eyebrow">ARCHIVO · {{ site.posts.length }} ARTÍCULOS</p>
   <h1>La bitácora</h1>
   {% if site.blogPage.post_content %}
-    <div class="wp-content">{{ site.blogPage.post_content | safe }}</div>
+    <div class="prose">{{ site.blogPage.post_content | safe }}</div>
   {% else %}
     <p>Notas sobre desarrollo web, tecnología, experimentos y todo lo que se cruza en el camino.</p>
   {% endif %}
@@ -34,4 +34,3 @@ permalink: /blog/index.html
     </article>
   {% endfor %}
 </div>
-

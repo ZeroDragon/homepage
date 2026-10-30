@@ -6,7 +6,7 @@ active: home
 permalink: /index.html
 ---
 <div class="home-kicker"><span class="status-dot"></span> BITÁCORA PERSONAL · DESDE 2015</div>
-<article class="home-content wp-content">{{ site.homePage.post_content | safe }}</article>
+<article class="home-content prose">{{ site.homePage.post_content | safe }}</article>
 <section class="recent-posts" aria-labelledby="recent-heading">
   <div class="section-heading">
     <div>
@@ -26,4 +26,3 @@ permalink: /index.html
     {% endfor %}
   </div>
 </section>
-
